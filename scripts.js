@@ -62,5 +62,27 @@ var products = [
         "active": false,
         "quantity": 1
     }
-];
+]
  
+const SelfServiceMachine = {
+    data (){
+        return {
+            products: window.products,
+        }
+    },
+    methods: {
+        total () {
+            var total = 0;
+
+            this.products.forEach((item) => {
+                if (item.active) {
+                    total += item.price * item.quantity
+                }
+            });
+
+            return total;
+        }
+    }
+}
+
+Vue.createApp(SelfServiceMachine).mount('#app')
